@@ -1,4 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { Subject, Subscription } from 'rxjs';
 import { debounceTime, distinctUntilChanged, switchMap, filter } from 'rxjs/operators';
 import { SpotifyApiService } from '../services/spotify-api';
@@ -10,6 +12,8 @@ import { Artist } from '../models/artist.model';
 
 @Component({
   selector: 'app-search-bar',
+  standalone: true,
+  imports: [CommonModule, FormsModule],
   templateUrl: './search-bar.html',
   styleUrls: ['./search-bar.css']
 })
