@@ -50,11 +50,11 @@
 }
 
 .track-item:hover {
-  background-color: #f5f5f5;
+  background-color: #424242;
 }
 
 .track-item.active {
-  background-color: #e8f5e9;
+  background-color: #424242;
 }
 
 .track-item.active .track-number .number {
@@ -75,7 +75,7 @@
 
 .track-number .number {
   font-size: 14px;
-  color: #999;
+  color: #ffffff;
   font-weight: 500;
 }
 
@@ -134,16 +134,16 @@
 }
 
 .track-list::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: #474747;
 }
 
 .track-list::-webkit-scrollbar-thumb {
-  background: #ccc;
+  background: #474747;
   border-radius: 4px;
 }
 
 .track-list::-webkit-scrollbar-thumb:hover {
-  background: #999;
+  background: #474747;
 }
 
 .track-list-loading {
