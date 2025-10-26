@@ -4,8 +4,9 @@
 }
 
 .track-list-card {
-  background: white;
+  background: rgba(255, 255,255, .1);
   border-radius: 12px;
+  border: 2px solid rgba(0,0,0,0.5);
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   overflow: hidden;
 }
@@ -114,7 +115,7 @@
 
 .track-artist {
   font-size: 13px;
-  color: #666;
+  color: #ffffff;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -122,7 +123,7 @@
 
 .track-duration {
   font-size: 13px;
-  color: #999;
+  color: #ffffff;
   font-weight: 500;
   min-width: 40px;
   text-align: right;

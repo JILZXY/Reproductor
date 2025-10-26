@@ -30,9 +30,10 @@
   top: 100%;
   left: 0;
   right: 0;
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  background: rgba(255, 255, 255, 0.349);
+  border-radius: 12px;
+  border: 2px solid rgba(0,0,0,0.6);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
   margin-top: 8px;
   max-height: 500px;
   overflow-y: auto;
@@ -42,7 +43,7 @@
 .loading {
   padding: 20px;
   text-align: center;
-  color: #666;
+  color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -86,7 +87,7 @@
   margin: 0;
   font-size: 12px;
   font-weight: 600;
-  color: #666;
+  color: #ffffff;
   text-transform: uppercase;
 }
 
@@ -143,7 +144,7 @@
 
 .result-artist {
   font-size: 12px;
-  color: #666;
+  color: #ffffff;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

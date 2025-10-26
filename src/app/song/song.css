@@ -4,8 +4,9 @@
 }
 
 .loading-container {
-  background: white;
+  background: rgba(255, 255,255, .1);
   border-radius: 12px;
+  border: 2px solid rgba(0,0,0,0.5);
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   padding: 60px 20px;
   text-align: center;
@@ -72,8 +73,9 @@
 }
 
 .song-card {
-  background: white;
+  background: rgba(255, 255,255, .1);
   border-radius: 12px;
+  border: 2px solid rgba(0,0,0,0.5);
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   overflow: hidden;
   transition: transform 0.3s, box-shadow 0.3s;
@@ -156,7 +158,7 @@
 .song-artist {
   margin: 0 0 12px 0;
   font-size: 16px;
-  color: #666;
+  color: #ffffff;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -172,7 +174,7 @@
 
 .album-name {
   font-size: 13px;
-  color: #888;
+  color: #ffffff;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -182,7 +184,7 @@
 
 .duration {
   font-size: 13px;
-  color: #888;
+  color: #ffffff;
   font-weight: 500;
 }
 
