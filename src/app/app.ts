@@ -1,10 +1,12 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Song } from './song/song';
+import { TrackList } from './track-list/track-list';
+import { SearchBar } from './search-bar/search-bar';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Song],
+  imports: [RouterOutlet, Song, TrackList, SearchBar],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

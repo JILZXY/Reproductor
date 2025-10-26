@@ -1,3 +1,20 @@
-<app-song></app-song>
+<div class="app-container">
+  <header class="app-header">
+    <h1>Reproductor de musica</h1>
+  </header>
 
-<router-outlet></router-outlet>
+  <main class="app-main">
+    <div class="search-section">
+      <app-search-bar></app-search-bar>
+    </div>
+
+    <div class="content-section">
+      <div class="song-section">
+        <app-song></app-song>
+      </div>
+      <div class="list-section">
+        <app-track-list></app-track-list>
+      </div>
+    </div>
+  </main>
+</div>
