@@ -57,7 +57,7 @@ export class SpotifyApiService {
       q: query.trim(),
       type: 'track,album,artist',
       limit: limit.toString(),
-      market: 'US'
+      market: 'MX'
     };
 
     return this.http.get<any>(url, { 

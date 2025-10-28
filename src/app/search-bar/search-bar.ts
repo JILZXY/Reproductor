@@ -104,6 +104,7 @@ export class SearchBar implements OnDestroy {
     
     this.musicState.selectTrack(track);
     this.closeResults();
+    this.router.navigate(['/player']);
   }
 
   selectAlbum(album: Album): void {
@@ -114,6 +115,7 @@ export class SearchBar implements OnDestroy {
     
     this.musicState.selectAlbum(album);
     this.closeResults();
+    this.router.navigate(['/player']);
   }
 
   selectArtist(artist: Artist): void {
@@ -124,6 +126,7 @@ export class SearchBar implements OnDestroy {
     
     this.musicState.selectArtist(artist);
     this.closeResults();
+    this.router.navigate(['/player']);
   }
 
   getImageUrl(item: Track | Album | Artist): string {

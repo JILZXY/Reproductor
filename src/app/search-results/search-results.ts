@@ -72,7 +72,7 @@ export class SearchResultsComponent implements OnInit, OnDestroy {
 
   selectArtist(artist: Artist): void {
     if (!artist || !artist.id) {
-      console.error('Artista inválido');
+      console.error('Artista inválido'); 
       return;
     }
     
