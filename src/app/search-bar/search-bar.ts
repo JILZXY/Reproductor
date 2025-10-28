@@ -2,6 +2,7 @@ import { Component, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Subject, Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 import { debounceTime, distinctUntilChanged, switchMap, filter } from 'rxjs/operators';
 import { SpotifyApiService } from '../services/spotify-api';
 import { MusicStateService } from '../services/music-state';
@@ -29,13 +30,15 @@ export class SearchBar implements OnDestroy {
   showResults = false;
   isSearching = false;
   searchError: string | null = null;
+  currentSearchTerm: string = '';
   
   private searchTerms = new Subject<string>();
   private subscription: Subscription;
 
   constructor(
     private spotifyApi: SpotifyApiService,
-    private musicState: MusicStateService
+    private musicState: MusicStateService,
+    private router: Router
   ) {
     this.subscription = this.searchTerms.pipe(
       filter(term => term.trim().length > 0),
@@ -67,6 +70,7 @@ export class SearchBar implements OnDestroy {
 
   onSearch(event: Event): void {
     const term = (event.target as HTMLInputElement).value;
+    this.currentSearchTerm = term;
     
     if (term.trim().length === 0) {
       this.showResults = false;
@@ -82,6 +86,14 @@ export class SearchBar implements OnDestroy {
     }
     
     this.searchTerms.next(term);
+  }
+
+  performSearch(): void {
+    this.closeResults();
+    if (this.currentSearchTerm.trim().length > 0) {
+      this.musicState.search(this.currentSearchTerm);
+      this.router.navigate(['/search']);
+    }
   }
 
   selectTrack(track: Track): void {

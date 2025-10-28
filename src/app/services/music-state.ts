@@ -1,14 +1,17 @@
+// services/music-state.service.ts
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { SpotifyApiService } from './spotify-api';
 import { Track } from '../models/track.models';
 import { Album } from '../models/album.model';
 import { Artist } from '../models/artist.model';
+import { SearchResult, SearchResultMapper } from '../models/search-result.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MusicStateService {
+  
   private currentTrackSubject = new BehaviorSubject<Track | null>(null);
   public currentTrack$ = this.currentTrackSubject.asObservable();
 
@@ -20,6 +23,17 @@ export class MusicStateService {
 
   private errorSubject = new BehaviorSubject<string | null>(null);
   public error$ = this.errorSubject.asObservable();
+  
+  private searchResultsSubject = new BehaviorSubject<SearchResult>(
+    SearchResultMapper.createEmpty()
+  );
+  public searchResults$ = this.searchResultsSubject.asObservable();
+
+  private searchTermSubject = new BehaviorSubject<string>('');
+  public searchTerm$ = this.searchTermSubject.asObservable();
+
+  private searchingSubject = new BehaviorSubject<boolean>(false);
+  public searching$ = this.searchingSubject.asObservable();
 
   constructor(private spotifyApi: SpotifyApiService) {}
 
@@ -31,7 +45,7 @@ export class MusicStateService {
 
     this.clearError();
     this.currentTrackSubject.next(track);
-    this.trackListSubject.next([]); 
+    this.trackListSubject.next([]);
   }
 
   public selectAlbum(album: Album): void {
@@ -108,6 +122,50 @@ export class MusicStateService {
     this.currentTrackSubject.next(null);
     this.trackListSubject.next([]);
     this.clearError();
+  }
+
+  public search(query: string, limit?: number): void {
+    if (!query || query.trim().length === 0) {
+      this.clearSearchResults();
+      return;
+    }
+
+    this.searchingSubject.next(true);
+    this.searchTermSubject.next(query.trim());
+    const searchLimit = limit || 50;
+
+    this.spotifyApi.search(query.trim(), searchLimit).subscribe({
+      next: (results) => {
+        this.searchResultsSubject.next(results);
+        this.searchingSubject.next(false);
+      },
+      error: (error) => {
+        console.error('Error en búsqueda:', error);
+        this.searchResultsSubject.next(SearchResultMapper.createEmpty());
+        this.searchingSubject.next(false);
+      }
+    });
+  }
+
+  public setSearchResults(results: SearchResult): void {
+    this.searchResultsSubject.next(results);
+  }
+
+  public getSearchResults(): SearchResult {
+    return this.searchResultsSubject.value;
+  }
+
+  public getSearchTerm(): string {
+    return this.searchTermSubject.value;
+  }
+
+  public hasSearchResults(): boolean {
+    return this.searchResultsSubject.value.hasResults;
+  }
+
+  public clearSearchResults(): void {
+    this.searchResultsSubject.next(SearchResultMapper.createEmpty());
+    this.searchTermSubject.next('');
   }
 
   private setError(message: string): void {

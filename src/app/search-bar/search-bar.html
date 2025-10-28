@@ -1,14 +1,16 @@
-<div class="search-container">
-  <div class="search-box">
+<div class="search-container" (focusout)="closeResults()">
+  <form class="search-box" (ngSubmit)="performSearch()">
     <input 
       type="text" 
       placeholder="Buscar canciones, álbumes o artistas..."
       (input)="onSearch($event)"
-      (blur)="closeResults()"
+      (focus)="onSearch($event)"
       class="search-input"
       autocomplete="off"
+      [(ngModel)]="currentSearchTerm"
+      name="searchTerm"
     >
-  </div>
+  </form>
 
   <div class="search-results" *ngIf="showResults">
     <div class="loading" *ngIf="isSearching">
@@ -17,7 +19,7 @@
     </div>
 
     <div class="error-message" *ngIf="searchError && !isSearching">
-      <span class="error-icon">⚠️</span>
+      <span class="error-icon"></span>
       <span>{{searchError}}</span>
     </div>
 
