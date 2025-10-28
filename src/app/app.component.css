@@ -1,6 +1,7 @@
 .app-container {
   min-height: 100vh;
   background: radial-gradient(#0d6901 0%, #000000 100%);
+  padding-bottom: 90px;
 }
 
 .app-header {

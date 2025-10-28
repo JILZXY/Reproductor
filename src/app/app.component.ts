@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { SearchBar } from './search-bar/search-bar';
+import { PlayerControlsComponent } from './player-controls/player-controls';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,8 @@ import { SearchBar } from './search-bar/search-bar';
   imports: [
     CommonModule,
     RouterOutlet,
-    SearchBar
+    SearchBar,
+    PlayerControlsComponent,
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
