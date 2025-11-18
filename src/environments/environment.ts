@@ -1,4 +1,4 @@
-export const spotify_environments={
+export const environment={
     API_URL: 'https://api.spotify.com/v1',
     AUTH_API_URL: 'https://accounts.spotify.com/api/token',
     CLIENT_ID: 'e095f07367da45abb8687133d28a04ed',
