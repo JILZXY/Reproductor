@@ -14,9 +14,9 @@ interface SpotifyTokenResponse {
   providedIn: 'root'
 })
 export class AuthService {
-  private readonly CLIENT_ID = environment.spotify.CLIENT_ID;
-  private readonly CLIENT_SECRET = environment.spotify.CLIENT_SECRET; 
-  private readonly TOKEN_URL = environment.spotify.AUTH_API_URL;
+  private readonly CLIENT_ID = environment.CLIENT_ID;
+  private readonly CLIENT_SECRET = environment.CLIENT_SECRET; 
+  private readonly TOKEN_URL = environment.AUTH_API_URL;
   
   private accessTokenSubject = new BehaviorSubject<string>('');
   private tokenExpirationTimer: any;
