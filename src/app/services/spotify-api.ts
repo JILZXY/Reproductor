@@ -13,7 +13,7 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class SpotifyApiService {
-  private readonly API_URL = environment.spotify.API_URL;
+  private readonly API_URL = environment.API_URL;
 
   constructor(
     private http: HttpClient,
