@@ -1,5 +1,5 @@
 # ARCHIVO DE PRUEBA PARA UN FLUJO DE TRABAJO EN GITHUB
-name: archivo de deploy para bucket s3 con angular
+name: archivo de deploy para bucket s3 con angular.
 
 on:
     push:
